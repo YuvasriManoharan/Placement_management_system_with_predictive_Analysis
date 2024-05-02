@@ -1,0 +1,343 @@
+    <!-- views/student_dashboard.ejs -->
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Student Dashboard</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+        <link href="{{ url_for('static', filename='css/profilestyle.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ url_for('static', filename='css/buttonstyle.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ url_for('static', filename='css/homestyle.css') }}" rel="stylesheet" type="text/css">
+        <style>
+            table {
+                width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 2px;
+        align-items: center;
+        margin: 0 auto; 
+            
+        }
+
+        th, td {
+            padding-left: 28px;
+            padding-right: 30px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        input[type="number"] {
+            width: 100px;
+            
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+            .card{
+                width:500px;
+                height:1150px;
+            }
+            .profile-section {
+                margin-bottom: 20px;
+               
+            }
+    
+            .profile-section p {
+                margin-bottom: 5px;
+            }
+           .container{
+            padding-left: 30%;
+            width:900px;
+            align-items: center;
+           }
+           .container-fluid{
+            height: 1000px;
+           }
+            /* Custom styles for events section */
+            .events-section {
+                margin-top: 30px;
+                width:900px;
+            }
+    
+            /* Custom styles for buttons */
+            .button-group {
+                margin-top: 10px;
+                width: 100%;
+            }
+    
+            .button-group button {
+                margin-right: 10px;
+                background-image: linear-gradient(to right, #3ab5b0 0%, #3d99be 31%, #56317a 100%);
+                color: #fff;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+                width: 45%;
+            }
+    
+            .button-group button:hover {
+                background-color: #0056b3;
+            }
+    
+            /* Custom styles for placement predictions section */
+            .predictions-section {
+                margin-top: 30px;
+            }
+    
+            .predictions-section table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+    
+            .predictions-section th, .predictions-section td {
+                border: 1px solid #ddd;
+                padding: 8px;
+                text-align: left;
+            }
+    
+            .predictions-section th {
+                background-color: #f2f2f2;
+            }
+    
+            .predictions-section input[type="number"] {
+                width: 100%;
+                padding: 8px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
+    
+            /* Additional custom styles can be added here */
+        </style>
+    </head>
+    <body>
+    
+        <img class=logo src="{{ url_for('static', filename='images/header_college_name.jpg') }}">
+        <header class="head">
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link active " href="#foots">Contact</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="/login">Login</a> 
+            </li>
+        </ul>
+        </header>
+
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Student Profile Section -->
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h2 class="text-center">Student Profile</h2>
+                            <div class="profile-section">
+                                <p><strong>Username:</strong> {{student.username }}</p><hr>
+                                <p><strong>Name:</strong> {{ student.name}}</p>
+                                <hr> <!-- Horizontal line -->
+                            </div>
+                            <div class="profile-section">
+                                <p><strong>Email:</strong> {{ student.email }}</p><hr>
+                                <p><strong>Phone:</strong> {{ student.phone }}</p>
+                                <hr> <!-- Horizontal line -->
+                            </div>
+                            <div class="profile-section">
+                                <p><strong>University:</strong> {{ student.university }}</p><hr>   
+                                <p><strong>Program:</strong> {{ student.program }}</p><hr>
+                                <p><strong>Year:</strong> {{ student.current_year }}</p><hr>
+                                <p><strong>CGPA:</strong> {{ student.cgpa }}</p><hr>
+                                <p><strong>10th Percentage:</strong> {{ student.tenth_percentage }}</p><hr>
+                                <p><strong>12th Percentage:</strong> {{ student.twelfth_percentage }}</p>
+                                <hr> <!-- Horizontal line -->
+                            </div>
+                            <div class="profile-section">
+                                <p><strong>Current Location:</strong> {{ student.current_location }}</p><hr>
+                                <p><strong>Preferred Location:</strong> {{ student.preferred_location }}</p>
+                                <hr> <!-- Horizontal line -->
+                            </div>
+                            <div class="profile-section">
+                                <p><strong>Gender:</strong> {{ student.gender }}</p><hr>
+                                <p><strong>Blood Group:</strong> {{ student.blood_group }}</p><hr>
+                                <p><strong>Backlog:</strong> {{ student.backlog }}</p>
+                                {% if student.backlog == 'yes' %}
+                                    <p><strong>Number of Backlogs:</strong> {{ student.backlog_count }}</p>
+                                {% endif %}<hr>
+                                <p><strong>Job Interest:</strong> {{ student.interested_in_job }}</p>
+                                {% if student.interested_in_job == 'no' %}
+                                    <p><strong>Reason for not interested in job:</strong> {{ student.job_reason_text }}</p>
+                                {% endif %}
+                            </div><hr>
+                            <a href="/edit_profile/{{student_id}}">Edit</a>
+
+                        </div>
+                    </div>
+                </div>
+                </div>
+                
+                <!-- Training Events Section -->
+                <div class="col-md-6">
+                    <div class="container events-section">
+                        <h2><b>Training Events</b></h2>
+                        <div class="button-group d-flex justify-content-between">
+                            <button onclick="location.href='/student_previous'"> Previous Training Events</button>
+                            <button onclick="location.href='/student_upcoming'">Upcoming Training Events</button>
+                        </div>
+                    </div>
+            
+            
+            <!-- Placement Events Section -->
+            <!-- Placement Events Section -->
+            
+            
+                    <div class="container">
+                        <h2><b>Placement Events</b></h2>
+                        <div class="button-group d-flex justify-content-between">
+                            <!-- Previous Placement Events Button -->
+                            <button onclick="location.href='student_previous_placements'"> Previous Placement Events</button>
+                            <!-- Upcoming Placement Events Button -->
+                            <button onclick="location.href='student_placement_upcoming/{{student_id}}'"> Upcoming Placement Events</button>
+                        </div>  
+                    </div>
+               
+               
+                <div class="container">
+                    <h2><b>Placement Predictions</b></h2>
+                    <div class="button-group d-flex justify-content-between">
+
+                        <!-- Form for inputting scores -->
+                        <form action="/details/{{student_id}}" method="Post" >
+                            <table>
+                                <tr>
+                                    <th>Attributes</th>
+                                    <th>Test</th>
+                                    <th>Scores</th>
+                                    
+                                </tr>
+                                <tr>
+                                    <td>Coding skills </td> <td><a href='/c_quiz/{{student_id}}' target="_blank">Take Test</a></td>
+                                    <td><input type="number" placeholder="" name="Coding"></td>
+                                </tr>
+                                <tr>
+                                    <td>Aptitude skills</td>
+                                    <td><a href='https://www.aptitude-test.com/free-aptitude-test/mixed-aptitude-test/' target="_blank">Take Test</a></td>
+                                    <td><input type="number" placeholder="" name="aptitude"></td>
+                                </tr>
+                            <tr>
+                              <td>Technical skills</td>
+                              <td><a href='https://www.aptitude-test.com/free-aptitude-test/mixed-aptitude-test/' target="_blank">Take Test</a></td>
+                              <td><input type="number" placeholder=""  name="Technical" ></td>
+                          
+                            </tr>
+                            <tr>
+                              <td>Communication skills</td>
+                              <td><a href='https://psychologytoday.tests.psychtests.com/bin/transfer' target="_blank">Take Test</a></td>
+                              
+                              <td><input type="number" placeholder="" name="Communication" ></td>
+                            </tr>
+                            <tr>
+                              <td>Core knowledge</td>
+                              <td><a href='https://www.aptitude-test.com/free-aptitude-test/mixed-aptitude-test/' target="_blank">Take Test</a></td>
+                              <td><input type="number" placeholder="" name="Core" ></td>
+                          
+                            </tr>
+                            <tr>
+                              <td>Puzzle solving skills</td>
+                              <td><a href='https://www.aptitude-test.com/free-aptitude-test/mixed-aptitude-test/' target="_blank">Take Test</a></td>
+                              <td><input type="number" placeholder="" name="Puzzle" ></td>
+                          
+                            </tr>
+                            <tr>
+                              <td>English proficiency</td>
+                              <td><a href='https://www.aptitude-test.com/free-aptitude-test/mixed-aptitude-test/' target="_blank">Take Test</a></td>
+                              <td><input type="number" placeholder="" name="English" ></td>
+                          
+                            </tr>
+                            <tr>
+                              <td>Management skills</td>
+                              <td><a href='https://www.aptitude-test.com/free-aptitude-test/mixed-aptitude-test/' target="_blank">Take Test</a></td>
+                              <td><input type="number" placeholder="" name="Management" ></td>
+                          
+                            </tr>
+                            <tr>
+                              <td>Presentation skills</td>
+                              <td><a href='https://www.aptitude-test.com/free-aptitude-test/mixed-aptitude-test/' target="_blank">Take Test</a></td>
+                              <td><input type="number" placeholder="" name="Presentation" ></td>
+                          
+                            </tr>
+                            <tr>
+                              <td>Academic performance</td>
+                              <td>Enter Cgpa</td>
+                              <td><input type="number" placeholder="" name="Academic" ></td>
+                          
+                            </tr>
+                              <tr>
+                              <td>Projects</td>
+                              <td>Mark obtained from project</td>
+                              <td><input type="number" placeholder="" name="Projects" ></td>
+                          
+                            </tr>
+                              <tr>
+                              <td>Internships</td>
+                              <td>No of intern*10</td>
+                              <td><input type="number" placeholder="" name="Internships" ></td>
+                          
+                            </tr>
+                              <tr>
+                              <td>Training</td>
+                              <td>No of Training*10</td>
+                              <td><input type="number" placeholder="" name="Training" ></td>
+                          
+                            </tr>
+                              <tr>
+                              <td>Backlog</td>
+                              <td>count of backlog</td>
+                              <td><input type="number" placeholder="" name="Backlog" ></td>
+                          
+                            </tr>
+                          </table><br>
+                          <input type="submit" class="btn btn-primary" value="Predict">
+                        </form>
+                    </div>
+                </div>
+            </div>
+            </div>
+            
+        </body>
+        </html>

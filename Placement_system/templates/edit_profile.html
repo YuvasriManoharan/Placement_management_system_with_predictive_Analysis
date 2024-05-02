@@ -1,0 +1,308 @@
+    <!-- views/student_dashboard.ejs -->
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Student Dashboard</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+        <link href="{{ url_for('static', filename='css/profilestyle.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ url_for('static', filename='css/buttonstyle.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ url_for('static', filename='css/homestyle.css') }}" rel="stylesheet" type="text/css">
+        <style>
+
+/* Center the card */
+.card {
+    margin-top: 50px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+}
+
+
+/* Style the form inputs */
+.card .form-group {
+    margin-bottom: 20px;
+}
+
+.card .form-group label {
+    font-weight: bold;
+}
+
+.card .form-control {
+    width: 100%;
+}
+
+/* Style the buttons */
+.card .btn-primary {
+    background-color: #007bff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.card .btn-primary:hover {
+    background-color: #0056b3;
+}
+
+
+
+/* Define the animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0; /* Start with opacity 0 (completely transparent) */
+    }
+    to {
+        opacity: 1; /* End with opacity 1 (fully visible) */
+    }
+}
+
+/* Apply the animation to specific elements */
+.card,
+.form-group,
+.btn {
+    animation: fadeIn 1s ease-in-out; /* Apply the fadeIn animation with a duration of 1 second and ease-in-out timing */
+}
+    
+            /* Custom styles for buttons */
+            .button-group {
+                margin-top: 10px;
+                width: 100%;
+            }
+    
+            .button-group button {
+                margin-right: 10px;
+                background-image: linear-gradient(to right, #3ab5b0 0%, #3d99be 31%, #56317a 100%);
+                color: #fff;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+                width: 45%;
+            }
+    
+            .button-group button:hover {
+                background-color: #0056b3;
+            }
+    
+            /* Custom styles for placement predictions section */
+            .predictions-section {
+                margin-top: 30px;
+            }
+    
+            .predictions-section table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+    
+            .predictions-section th, .predictions-section td {
+                border: 1px solid #ddd;
+                padding: 8px;
+                text-align: left;
+            }
+    
+            .predictions-section th {
+                background-color: #f2f2f2;
+            }
+    
+            .predictions-section input[type="number"] {
+                width: 100%;
+                padding: 8px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
+    
+            /* Additional custom styles can be added here */
+        </style>
+    </head>
+    <body>
+    
+        <img class=logo src="{{ url_for('static', filename='images/header_college_name.jpg') }}">
+        <header class="head">
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link active " href="#foots">Contact</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="/login">Login</a> 
+            </li>
+        </ul>
+        </header>
+
+
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="text-center">Edit Profile</h2>
+                        <form action="/update_profile" method="POST">
+                            <!-- Register No. -->
+                            <div class="form-group">
+                                <label for="username">Register No.</label>
+                                <input type="text" id="username" name="username" value="{{ student.username }}" aria-disabled="true">
+                            </div>
+
+                            <!-- Name -->
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" name="name" value="{{ student.name }}" required>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" name="email" value="{{ student.email }}" required>
+                            </div>
+
+                            <!-- Phone -->
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input type="tel" class="form-control" id="phone" name="phone" value="{{ student.phone }}" required>
+                            </div>
+
+                            <!-- Gender -->
+                            <div class="form-group">
+                                <label>Gender</label><br>
+                                <input type="radio" id="male" name="gender" value="male" {% if student.gender == 'male' %}checked{% endif %}>
+                                <label for="male">Male</label>
+                                <input type="radio" id="female" name="gender" value="female" {% if student.gender == 'female' %}checked{% endif %}>
+                                <label for="female">Female</label>
+                            </div>
+
+                            <!-- Blood Group -->
+                            <div class="form-group">
+                                <label for="blood_group">Blood Group</label>
+                                <input type="text" class="form-control" id="blood_group" name="blood_group" value="{{ student.blood_group }}" required>
+                            </div>
+
+                            <!-- University -->
+                            <div class="form-group">
+                                <label for="university">University</label>
+                                <input type="text" class="form-control" id="university" name="university" value="{{ student.university }}" required>
+                            </div>
+
+                            <!-- Program -->
+                            <div class="form-group">
+                                <label for="program">Program</label>
+                                
+                              <select id="program" name="program" required>
+                                    <option value="Select Department" aria-disabled="false" >Select Department</option>
+                                    <option value="Information Technology">Information Technology</option>
+                                    <option value="Computer Science and Engineering">Computer Science and Engineering</option>
+                                    <option value="Electrical and Electronics Engineering">Electrical and Electronics Engineering</option>
+                                    <option value="Electronics and Communication Engineering">Electronics and Communication Engineering</option>
+                                    <option value="Civil Engineering">Civil Engineering</option>
+                                    <option value="Mechanical Engineering">Mechanical Engineering</option>
+                                    <option value="MCA">MCA</option>
+                                </select>
+                            </div>
+
+                            <!-- Current Year -->
+<!-- Current Year -->
+<div class="form-group">
+    <label for="current_year">Current Year</label>
+    <input type="text" class="form-control" id="current_year" name="current_year" value="{{ student.current_year }}" required>
+</div>
+
+<!-- 10th Percentage -->
+<div class="form-group">
+    <label for="tenth_percentage">10th Percentage:</label>
+    <input type="number" id="tenth_percentage" name="tenth_percentage"value="{{ student.tenth_percentage }}" required>
+</div>
+
+<!-- 12th Percentage -->
+<div class="form-group">
+    <label for="twelfth_percentage">12th Percentage:</label>
+    <input type="number" id="twelfth_percentage" name="twelfth_percentage"value="{{ student.twelfth_percentage }}"required>
+</div>
+
+<!-- CGPA -->
+<div class="form-group">
+    <label for="cgpa">CGPA:</label>
+    <input type="number" id="cgpa" name="cgpa" value="{{ student.cgpa }}"required>
+</div>
+
+                            <!-- Current Location -->
+                            <div class="form-group">
+                                <label for="current_location">Current Location</label>
+                                <input type="text" class="form-control" id="current_location" name="current_location" value="{{ student.current_location }}" required>
+                            </div>
+
+                            <!-- Preferred Location -->
+                            <div class="form-group">
+                                <label for="preferred_location">Preferred Location</label>
+                                <input type="text" class="form-control" id="preferred_location" name="preferred_location" value="{{ student.preferred_location }}" required>
+                            </div>
+
+                            <!-- Skills -->
+                            <div class="form-group">
+                                <label for="skills">Skills</label>
+                                <input type="text" class="form-control" id="skills" name="skills" value="{{ student.skills }}" required>
+                            </div>
+
+                            <!-- Backlog -->
+                            <div class="form-group">
+                                <label>Do you have any backlog?</label><br>
+                                <input type="radio" id="backlog_yes" name="backlog" value="yes" {% if student.backlog == 'yes' %}checked{% endif %}>
+                                <label for="backlog_yes">Yes</label>
+                                <input type="radio" id="backlog_no" name="backlog" value="no" {% if student.backlog == 'no' %}checked{% endif %}>
+                                <label for="backlog_no">No</label>
+                            </div>
+
+                            <!-- Backlog Count (Show only if there are backlogs) -->
+                            {% if student.backlog == 'yes' %}
+                            <div class="form-group" id="backlog_count_field">
+                                <label for="backlog_count">Number of Backlogs</label>
+                                <input type="number" class="form-control" id="backlog_count" name="backlog_count" value="{{ student.backlog_count }}">
+                            </div>
+                            {% endif %}
+                            {% if student.backlog == 'no' %}
+                            <div class="form-group" id="backlog_count_field">
+                                <label for="backlog_count">Number of Backlogs</label>
+                                <input type="hidden" class="form-control" id="backlog_count" name="backlog_count" value="{{ student.backlog_count }}">
+                            </div>
+                            {% endif %}
+
+                            <!-- Interested in Job -->
+                            <div class="form-group">
+                                <label>Interested in Job?</label><br>
+                                <input type="radio" id="job_yes" name="interested_in_job" value="yes" {% if student.interested_in_job == 'yes' %}checked{% endif %}>
+                                <label for="job_yes">Yes</label>
+                                <input type="radio" id="job_no" name="interested_in_job" value="no" {% if student.interested_in_job == 'no' %}checked{% endif %}>
+                                <label for="job_no">No</label>
+                            </div>
+
+                            <!-- Job Reason (Show only if not interested in job) -->
+                            {% if student.interested_in_job == 'no' %}
+                            <div class="form-group" id="job_reason_field">
+                                <label for="job_reason_text">Reason for not interested in job</label>
+                                <input type="text" class="form-control" id="job_reason_text" name="job_reason_text" value="{{ student.job_reason_text }}">
+                            </div>
+                            {% endif %}
+                            <!-- Add a hidden input field to store the ObjectId -->
+    <input type="hidden" name="student_id" value="{{ student._id }}">
+                            <!-- Add more form fields as needed -->
+                            <button type="submit" class="btn btn-primary">Update Profile</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    <!-- Scripts go here -->
+</body>
+</html>

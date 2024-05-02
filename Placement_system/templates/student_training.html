@@ -1,0 +1,145 @@
+    <!-- views/student_dashboard.ejs -->
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Student Dashboard</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+        <link href="{{ url_for('static', filename='css/profilestyle.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ url_for('static', filename='css/buttonstyle.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ url_for('static', filename='css/homestyle.css') }}" rel="stylesheet" type="text/css">
+        <style>
+            .card{
+                width:500px;
+            }
+            .profile-section {
+                margin-bottom: 20px;
+               
+            }
+            @keyframes fadeIn {
+    from {
+        opacity: 0; /* Start with opacity 0 (completely transparent) */
+    }
+    to {
+        opacity: 1; /* End with opacity 1 (fully visible) */
+    }
+}
+
+/* Apply the animation to specific elements */
+.container {
+    animation: fadeIn 1s ease-in-out; /* Apply the fadeIn animation with a duration of 1 second and ease-in-out timing */
+}
+            .profile-section p {
+                margin-bottom: 5px;
+            }
+           .container{
+            
+            width:900px;
+           }
+            /* Custom styles for events section */
+            .events-section {
+                margin-top: 30px;
+                width:900px;
+            }
+    
+            /* Custom styles for buttons */
+            .button-group {
+                margin-top: 10px;
+                width: 100%;
+            }
+    
+            .button-group button {
+                margin-right: 10px;
+                background-image: linear-gradient(to right, #3ab5b0 0%, #3d99be 31%, #56317a 100%);
+                color: #fff;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+                width: 45%;
+            }
+    
+            .button-group button:hover {
+                background-color: #0056b3;
+            }
+    
+            /* Custom styles for placement predictions section */
+            .predictions-section {
+                margin-top: 30px;
+            }
+    
+            .predictions-section table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+    
+            .predictions-section th, .predictions-section td {
+                border: 1px solid #ddd;
+                padding: 8px;
+                text-align: left;
+            }
+    
+            .predictions-section th {
+                background-color: #f2f2f2;
+            }
+    
+            .predictions-section input[type="number"] {
+                width: 100%;
+                padding: 8px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
+    
+            /* Additional custom styles can be added here */
+        </style>
+    </head>
+    <body>
+    
+        <img class=logo src="{{ url_for('static', filename='images/header_college_name.jpg') }}">
+        <header class="head">
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link active " href="#foots">Contact</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="/login">Login</a> 
+            </li>
+        </ul>
+        </header>
+    <div class="container">
+        <h1>Previous Training Events</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Program Name</th>
+                    <th>Resource Person</th>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Departments</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for event in trainingEvents %}
+                <tr>
+                    <td>{{ event.programName }}</td>
+                    <td>{{ event.resourcePerson }}</td>
+                    <td>{{ event.date }}</td>
+                    <td>{{ event.description }}</td>
+                    <td>{{ event.departments }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

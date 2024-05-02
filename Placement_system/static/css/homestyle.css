@@ -1,0 +1,112 @@
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    color: #333;
+    line-height: 1.6;
+}
+
+.logo {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: 50%;
+}
+.head {
+    background-image: linear-gradient(-225deg, #22E1FF 0%, #1D8FE1 48%, #625EB1 100%);    
+    padding: 1rem;
+}
+.active{
+    color:rgb(255, 255, 255);
+}
+main {
+    padding: 20px;
+}
+
+/* Hero section styles */
+
+.welcome {
+    font-size: 2.5rem;
+    color: #fffdfd;
+    font-weight: bolder;
+
+    
+}
+
+/* About section styles */
+#about {
+    margin-top: 20px;
+    padding: 20px 0;
+    background-position: center;
+    text-align: center;
+    background-image: radial-gradient(73% 147%, #EADFDF 59%, #ECE2DF 100%), radial-gradient(91% 146%, rgba(255,255,255,0.50) 47%, rgba(0,0,0,0.50) 100%);
+    background-blend-mode: screen;
+    border-radius: 20px;
+    height: 200px;
+    animation-name: fadeIn;
+    animation-duration: 2s;
+}
+
+#about h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+#about p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    text-align: justify;
+}
+
+/* Login section styles */
+.Report {
+    padding: 20px 0;
+    align-items: center;
+
+}
+
+.Report h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Footer styles */
+footer {
+    background-color: #343a40;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: auto; 
+}
+
+footer p {
+    font-size: 1rem;
+}
+/* public/styles.css */
+
+.card {
+    border: black;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+
+.profile-section {
+    margin-bottom: 20px;
+}
+
+.profile-section hr {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+}

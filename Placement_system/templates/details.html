@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Details</title>
+<style>
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #ce0c36;
+  color: white;
+}
+
+.btn {
+  background-color: rgb(167, 36, 54);
+  padding: 12px;
+  font-weight: bold;
+  border :none;
+  border-radius: 10%;
+  color: antiquewhite;
+}
+#customers input{
+  display: block;
+}
+</style>
+</head>
+<body>
+  <center>{% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul class="flashes">
+         {% for message in messages %}
+          <div class="message_flash">{{ message }}</div>
+         {% endfor %}
+     </ul>
+   {% endif %}
+  {% endwith %}</center>
+
+<form method="post">
+  <label for="name">Student Name</label>
+  <input type="text" name="name" value="{{ user[0][2] }}" >
+  <label for="dte">Date</label>
+  <input type="text" name="dte" value="{{ user[0][1] }}"><br>
+<table id="customers">
+  <tr>
+    <th>Attributes</th>
+    <th>Scores</th>
+
+  </tr>
+  <tr>
+    <td>Coding skills</td>
+    <td> <input type="number" placeholder=""  name="Coding" value="{{ user[0][6] }}"></td>
+
+  </tr>
+  <tr>
+    <td>Aptitude skills</td>
+    <td><input type="number" placeholder="" name="aptitude" ></td>
+
+  </tr>
+  <tr>
+    <td>Technical skills</td>
+    <td><input type="number" placeholder=""  name="Technical" value="{{ user[0][6] }}"></td>
+
+  </tr>
+  <tr>
+    <td>Communication skills</td>
+    <td><input type="number" placeholder="" name="Communication" ></td>
+  </tr>
+  <tr>
+    <td>Core knowledge</td>
+    <td><input type="number" placeholder="" name="Core" ></td>
+
+  </tr>
+  <tr>
+    <td>Puzzle solving skills</td>
+    <td><input type="number" placeholder="" name="Puzzle" ></td>
+
+  </tr>
+  <tr>
+    <td>English proficiency</td>
+    <td><input type="number" placeholder="" name="English" ></td>
+
+  </tr>
+  <tr>
+    <td>Management skills</td>
+    <td><input type="number" placeholder="" name="Management" ></td>
+
+  </tr>
+  <tr>
+    <td>Presentation skills</td>
+    <td><input type="number" placeholder="" name="Presentation" ></td>
+
+  </tr>
+  <tr>
+    <td>Academic performance</td>
+    <td><input type="number" placeholder="" name="Academic" ></td>
+
+  </tr>
+    <tr>
+    <td>Projects</td>
+    <td><input type="number" placeholder="" name="Projects" ></td>
+
+  </tr>
+    <tr>
+    <td>Internships</td>
+    <td><input type="number" placeholder="" name="Internships" ></td>
+
+  </tr>
+    <tr>
+    <td>Training</td>
+    <td><input type="number" placeholder="" name="Training" ></td>
+
+  </tr>
+    <tr>
+    <td>Backlog</td>
+    <td><input type="number" placeholder="" name="Backlog" ></td>
+
+  </tr>
+</table><br>
+<center><input type="submit" class="btn" value="Predict"></center>
+  </form>
+</body>
+</html>

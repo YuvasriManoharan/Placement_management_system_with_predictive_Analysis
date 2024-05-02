@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Previous Training Events</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/homestyle.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+
+.head {
+            background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+}
+
+.container {
+    width: 80%;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Box shadow */
+    animation: slideIn 1s ease-in-out; /* Slide-in animation for container */
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateY(-50px); /* Start position above */
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0); /* End position */
+        opacity: 1;
+    }
+}
+
+h1 {
+    color: #020000; /* White header text */
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff; /* White background for the table */
+    border-radius: 10px;
+    overflow: hidden; /* Hide overflow for rounded corners */
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+
+thead {
+    background-color: #02535a84; /* Blue background for table header */
+    color: #fff; /* White text color for table header */
+}
+
+tbody tr:nth-child(even) {
+    background-color: #E3F2FD; /* Light blue background for even rows */
+}
+
+tbody tr:hover {
+    background-color: #BBDEFB; /* Lighter blue hover effect */
+}
+    </style>
+</head>
+<body>
+    <img class=logo src="{{ url_for('static', filename='images/header_college_name.jpg') }}">
+    <header class="head">
+    <ul class="nav justify-content-end">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active " href="#foots">Contact</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="/login">Login</a> 
+        </li>
+      </ul>
+    </header>
+    <div class="container">
+        <h1>Upcoming Training Events</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Program Name</th>
+                    <th>Resource Person</th>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Departments</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for event in trainingEvents %}
+                <tr>
+                    <td>{{ event.programName }}</td>
+                    <td>{{ event.resourcePerson }}</td>
+                    <td>{{ event.date }}</td>
+                    <td>{{ event.description }}</td>
+                    <td>{{ event.departments }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

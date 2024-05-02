@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placement Notifications</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="{{ url_for('static', filename='css/homestyle.css') }}" rel="stylesheet" type="text/css">
+   
+    <style>
+        /* Header styles */
+        .logo {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            height: auto;
+        }
+        .header {
+            background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        /* Table styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        /* Placement card styles */
+        .placement-card {
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease; /* Add animation transition */
+        }
+        .placement-card:hover {
+            transform: translateY(-5px); /* Add hover animation */
+        }
+        .placement-details p {
+            margin: 5px 0;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+        }
+        .placement-details p strong {
+            min-width: 200px; /* Adjust as needed */
+            display: inline-block;
+        }
+        .placement-details p span {
+            flex-grow: 1;
+        }
+                /* Custom styles for h2 */
+                .special-heading {
+            color: #007bff; /* Change color to blue */
+            font-size: 28px; /* Increase font size */
+            margin-bottom: 20px; /* Increase margin bottom for spacing */
+            text-align: center; /* Center align the heading */
+        }
+
+
+        /* Custom styles for h2 */
+        .special-heading {
+            color: #007bff; /* Change color to blue */
+            font-size: 28px; /* Increase font size */
+            margin-bottom: 20px; /* Increase margin bottom for spacing */
+            text-align: center; /* Center align the heading */
+        }
+
+        /* Custom styles for table */
+        .special-table {
+            width: 100%; /* Make the table width 100% */
+            border-collapse: collapse;
+            margin: 20px auto;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Add box shadow */
+            border-radius: 10px; /* Add border radius */
+            overflow: hidden; /* Hide overflow to prevent box shadow from leaking */
+        }
+        .special-table th, .special-table td {
+            padding: 12px; /* Increase padding for better spacing */
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            font-size: 16px; /* Increase font size */
+        }
+        .special-table th {
+            background-color: #6f0622;
+            font-weight: bold;
+            color: #fff7f7; /* Darken font color */
+            text-transform: uppercase; /* Convert text to uppercase */
+        }
+        .special-table td {
+            background-color: #f9f9f9; /* Alternate row background color */
+            animation: fadeIn 0.5s ease-in-out; /* Apply fade-in animation to table rows */
+        }
+
+        /* Animation keyframes */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0; /* Start with opacity 0 */
+                transform: translateY(20px); /* Move up slightly */
+            }
+            100% {
+                opacity: 1; /* End with opacity 1 */
+                transform: translateY(0); /* Move to original position */
+            }
+        }
+    </style>
+
+</head>
+<body>
+    
+    
+        <img class=logo src="{{ url_for('static', filename='images/header_college_name.jpg') }}">
+        <header class="head">
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link active " href="#foots">Contact</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="/login">Login</a> 
+            </li>
+        </ul>
+        </header>
+    
+        <div class="container">
+            <h2 class="special-heading">Previous Placement</h2>
+            <table class="special-table">
+                <thead>
+                    <tr>
+                        <th>Company Name</th>
+                        <th>Industry Type</th>
+                        <th>Date of Program</th>
+                        <th>No of Students Attended</th>
+                        <th>No of Students Selected</th>
+                        <th>Interview Process Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for placement in placements %}
+                    <tr>
+                        <td>{{ placement.companyName }}</td>
+                        <td>{{ placement.industryType }}</td>
+                        <td>{{ placement.dateOfProgram.strftime('%Y-%m-%d') }}</td>
+                        <td>{{ placement.studentsAttended }}</td>
+                        <td>{{ placement.studentsSelected }}</td>
+                        <td>{{ placement.interviewProcess }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </body>
+    </html>

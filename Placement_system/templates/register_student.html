@@ -1,0 +1,272 @@
+    <!-- views/registration_form.ejs -->
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Student Registration Form</title>
+        <link href="{{ url_for('static', filename='css/loginstyle.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ url_for('static', filename='css/homestyle.css') }}" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+        <style>
+            .containe {
+                width:800px; /* Increase container width */
+                height: auto;
+                margin: 400px auto;
+            margin-top:650px;
+                background-color: #fff;
+                border-radius: 8px;
+                padding: 30px;
+            box-shadow: 0 1 20px rgba(0, 0, 0, 0.1);
+                display: block;
+                position:absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+
+        
+            }
+            .sub {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .sub:hover {
+            background-color: #0056b3;
+        }
+        table{
+        
+            text-align: center;
+        }
+        table td{
+            padding-top: 30px;
+            padding-left: 20px;
+        }
+        #r{
+            padding-left: -40px  ;
+        }
+        form-section {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            form-section label {
+                flex-basis: 150px; /* Adjust label width */
+                text-align: right;
+                margin-right: 20px; /* Add some space between label and input */
+            }
+
+            form-section input,
+            form-section select {
+                flex-basis: calc(50% - 170px); /* Adjust input width */
+            }
+            form-section2 {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            form-section2 label {
+                flex-basis: 150px; /* Adjust label width */
+                text-align: right;
+                margin-right: 20px; /* Add some space between label and input */
+            }
+
+            form-section2 input,
+            form-section2 select {
+                flex-basis: calc(50% - 170px); /* Adjust input width */
+            }
+
+
+        </style>
+
+    </head>
+    <body>
+        <img class=logo src="{{ url_for('static', filename='images/header_college_name.jpg') }}">
+        <header class="head">
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="home.ejs">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active " href="#foots">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/login">Login</a>
+                </li>
+            </ul>
+        </header>
+        <main>
+        <div class="containe">
+        <h2>Student Registration Form</h2>
+        <form action="/register_student" method="POST" class="form-section">
+            <table>
+                <tr>
+                    <td><label for="name">Register No.:</label></td>
+                    <td><input type="text" id="username" name="username" required></td>
+                </tr>
+                <tr>
+                    <td><label for="name">Name:</label></td>
+                    <td><input type="text" id="name" name="name" required></td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="gender">Gender:</label><br></td>
+                    <td id="r">
+                    <input type="radio" id="male" name="gender" value="male">
+                    <label for="male">Male</label>
+                    <input type="radio" id="female" name="gender" value="female">
+                    <label for="female">Female</label><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>  <label for="blood_group">Blood Group:</label></td>
+                    <td><input type="text" id="blood_group" name="blood_group" required><br></td>
+                    
+                </tr>
+                <tr>
+                    <td><label for="email">Email:</label></td>
+                    <td><input type="email" id="email" name="email" required></td>
+                </tr>
+                <tr>
+                    <td><label for="phone">Phone:</label></td>
+                    <td><input type="text" id="phone" name="phone" required></td>
+                </tr>
+            </form>
+                <form action="/register_student" method="POST" class="form-section2"></form>
+                <tr>
+                    <td><label for="university">University:</label></td>
+                    <td><input type="text" id="university" name="university" required></td>
+                </tr>
+                <tr>
+                    <td><label for="program">Program:</label></td>
+                    <td><select id="program" name="program" required>
+                        <option value="Select Department" aria-disabled="false" >Select Department</option>
+                        <option value="Information Technology">Information Technology</option>
+                        <option value="Computer Science and Engineering">Computer Science and Engineering</option>
+                        <option value="Electrical and Electronics Engineering">Electrical and Electronics Engineering</option>
+                        <option value="Electronics and Communication Engineering">Electronics and Communication Engineering</option>
+                        <option value="Civil Engineering">Civil Engineering</option>
+                        <option value="Mechanical Engineering">Mechanical Engineering</option>
+                        <option value="MCA">MCA</option>
+                    </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="current_year">Current Year:</label></td>
+                    <td><input type="number" id="year" name="year" required></td>
+                </tr>
+                <tr>
+                    <td><label for="10th_percentage">10th Percentage:</label></td>
+                    <td><input type="number" id="tenth_percentage" name="tenth_percentage" required></td>
+                </tr>
+                <tr>
+                    <td><label for="12th_percentage">12th Percentage:</label></td>
+                    <td><input type="number" id="twelfth_percentage" name="twelfth_percentage" required></td>
+                </tr>
+                <tr>
+                    <td><label for="cgpa">CGPA:</label></td>
+                    <td><input type="number" id="cgpa" name="cgpa" required></td>
+                </tr>
+                <tr>
+                    <td><label for="current_location">Current Location:</label></td>
+                    <td><input type="text" id="current_location" name="current_location" required></td>
+                </tr>
+                <tr>
+                    <td><label for="preferred_location">Preferred Location:</label></td>
+                    <td><input type="text" id="preferred_location" name="preferred_location" required></td>
+                </tr>
+                <tr>
+                    <td><label for="skills">Skills:</label></td>
+                    <td><input type="text" id="skills" name="skills" required></td>
+                </tr>
+                <tr>
+                    <td><label for="backlog">Backlog:</label><br></td>
+                    <td><input type="radio" id="backlog_yes" name="backlog" value="yes">
+                    <label for="backlog_yes">Yes</label>
+                    <input type="radio" id="backlog_no" name="backlog" value="no">
+                    <label for="backlog_no">No</label><br></td>
+
+                    <!-- Show this field only if the user has backlog -->
+                    <td><div id="backlog_reason" style="display:none;">
+                        <label for="backlog_count">Number of Backlogs:</label>
+                        <input type="number" id="backlog_count" name="backlog_count"></td>
+                    </div>
+                </tr>
+                <tr>
+                    <td><label for="interested_in_job">Interested in Job:</label><br></td>
+                    <td><input type="radio" id="job_yes" name="interested_in_job" value="yes">
+                    <label for="job_yes">Yes</label>
+                    <input type="radio" id="job_no" name="interested_in_job" value="no">
+                    <label for="job_no">No</label><br></td>
+
+                    <!-- Show this field only if the user is not interested in a job -->
+                    <td><div id="job_reason" style="display:none;">
+                        <label for="job_reason_text">Reason for not interested:</label>
+                        <input type="text" id="job_reason_text" name="job_reason_text">
+                    </div></td>
+                </tr>
+            </table>
+            <input class="sub" type="submit" value="Register">
+        </form>
+    </div>
+    </main>
+    </body>
+    <script>
+        // Function to show/hide backlog reason field based on radio button selection
+        function toggleBacklogReason() {
+            // Get the value of the selected radio button for backlog
+            var hasBacklog = document.querySelector('input[name="backlog"]:checked').value;
+            // Get the element for the backlog reason field
+            var backlogReasonField = document.getElementById('backlog_reason');
+
+            // Show or hide the backlog reason field based on the selected value
+            if (hasBacklog === 'yes') {
+                backlogReasonField.style.display = 'block'; // Show the backlog reason field
+            } else {
+                backlogReasonField.style.display = 'none'; // Hide the backlog reason field
+            }
+        }
+
+        // Function to show/hide job reason field based on radio button selection
+        function toggleJobReason() {
+            // Get the value of the selected radio button for job interest
+            var interestedInJob = document.querySelector('input[name="interested_in_job"]:checked').value;
+            // Get the element for the job reason field
+            var jobReasonField = document.getElementById('job_reason');
+
+            // Show or hide the job reason field based on the selected value
+            if (interestedInJob === 'no') {
+                jobReasonField.style.display = 'block'; // Show the job reason field
+            } else {
+                jobReasonField.style.display = 'none'; // Hide the job reason field
+            }
+        }
+
+        // Add event listeners to radio buttons to trigger functions
+        document.querySelectorAll('input[name="backlog"]').forEach(function(radio) {
+            radio.addEventListener('change', toggleBacklogReason); // Listen for changes in backlog radio buttons
+        });
+
+        document.querySelectorAll('input[name="interested_in_job"]').forEach(function(radio) {
+            radio.addEventListener('change', toggleJobReason); // Listen for changes in job interest radio buttons
+        });
+    </script>
+    </body>
+    </html>

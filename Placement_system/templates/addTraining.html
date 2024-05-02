@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Training Event</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  
+    <style>
+        /* CSS styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .logo {
+            display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+}
+        .nav-link {
+            color: #fff;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .nav-link:hover {
+            color: #f0f0f0;
+        }
+        .container {
+            max-width: 500px;
+            margin: 30px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #007bff;
+        }
+        form {
+            display: grid;
+            gap: 20px;
+        }
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+        input[type="text"],
+        input[type="date"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+        input[type="text"]:focus,
+        input[type="date"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .checkbox-group {
+            display: grid;
+            gap: 10px;
+        }
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+    </style>
+</head>
+<body>
+    <img class=logo src="{{ url_for('static', filename='images/header_college_name.jpg') }}">
+    <header class="header">
+        <nav>
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link active" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#contact">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/login">Login</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Add Training Event</h1>
+        <form action="/add_training_event2" method="POST">
+            <label for="programName">Program Name:</label>
+            <input type="text" id="programName" name="programName" required>
+
+            <label for="resourcePerson">Resource Person:</label>
+            <input type="text" id="resourcePerson" name="resourcePerson" required>
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="4" required></textarea>
+            <div class="checkbox-group">
+                <label>Current Year:</label>
+                <label><input type="checkbox" name="currentYear" value="1"> First Year</label>
+                <label><input type="checkbox" name="currentYear" value="2"> Second Year</label>
+                <label><input type="checkbox" name="currentYear" value="3"> Third Year</label>
+                <label><input type="checkbox" name="currentYear" value="4"> Fourth Year</label>
+            </div>
+            
+            <div class="checkbox-group">
+                <label>Departments:</label>
+                <label><input type="checkbox" id="it" name="departments" value="Information Technology"> Information Technology</label>
+                <label><input type="checkbox" id="cse" name="departments" value="Computer Science and Engineering"> Computer Science and Engineering</label>
+                <label><input type="checkbox" id="eee" name="departments" value="Electrical and Electronics Engineering"> Electrical and Electronics Engineering</label>
+                <label><input type="checkbox" id="ece" name="departments" value="Electronics and Communication Engineering"> Electronics and Communication Engineering</label>
+                <label><input type="checkbox" id="civil" name="departments" value="Civil Engineering"> Civil Engineering</label>
+                <label><input type="checkbox" id="mech" name="departments" value="Mechanical Engineering"> Mechanical Engineering</label>
+                <label><input type="checkbox" id="mca" name="departments" value="MCA"> MCA</label>
+            </div>
+
+            <button type="submit">Add Event</button>
+        </form>
+    </div>
+</body>
+</html>

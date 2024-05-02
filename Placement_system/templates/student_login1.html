@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename='css/loginstyle.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ url_for('static', filename='css/homestyle.css') }}" rel="stylesheet" type="text/css">
+    <style>
+        body {
+            background-image: linear-gradient(to top, #d9afd9 0%, #97d9e1 100%);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 400px;
+        }
+
+        .login {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            margin: 100px auto;
+            padding: 30px;
+        }
+
+        .login h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .login input[type="text"],
+        .login input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .login .sub {
+            margin-left: 125px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            align-items: center;
+        }
+
+        .login .sub:hover {
+            background-color: #0056b3;
+        }
+
+        .login p {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .login p a {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .login p a:hover {
+            color: #0056b3;
+        }
+
+        .alert {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <img class="logo" src="{{ url_for('static', filename='images/header_college_name.jpg') }}">
+
+    <header class="head">
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{{ url_for('home') }}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active " href="#foots">Contact</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="{{ url_for('login') }}">Login</a>
+            </li>
+        </ul>
+    </header>
+<main>
+    <div class="login-container">
+        <div class="login">
+            <div class="login-image"></div>
+            <div class="login-form">
+                <h1>Login</h1>
+
+                {% if 'error' in messages and messages.error|length > 0 %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ messages.error[0] }}
+                    </div>
+                {% endif %}
+
+                {% if 'success' in messages and messages.success|length > 0 %}
+                    <div class="alert alert-success" role="alert">
+                        {{ messages.success[0] }}
+                    </div>
+                {% endif %}
+
+                <form action="{{ url_for('signin') }}" method="POST">
+                    <input type="text" name="username" placeholder="Register Number" required><br>
+                    <input type="password" name="password" placeholder="Password" required><br>
+
+                    <input class="sub" type="submit" value="Login">
+                </form>
+     
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <link href="{{ url_for('static', filename='css/profilestyle.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ url_for('static', filename='css/buttonstyle.csss') }}" rel="stylesheet" type="text/css">
+    <link href="{{ url_for('static', filename='css/homestyle.css') }}" rel="stylesheet" type="text/css">
+    <style>
+.profile-section {
+    margin-bottom: 20px;
+}
+
+.profile-section p {
+    margin-bottom: 5px;
+}
+
+/* Custom styles for events section */
+.events-section {
+    margin-top: 30px;
+}
+
+/* Additional custom styles can be added here */
+
+/* buttonstyle.css */
+/* (Note: Correct the filename to buttonstyle.css, if the filename was a typo) */
+
+/* Custom styles for buttons */
+.button-group {
+    margin-top: 10px;
+    width:900px;
+}
+
+.button-group button {
+    margin-right: 40px;
+    background-image: linear-gradient(to right, #3ab5b0 0%, #3d99be 31%, #56317a 100%);
+    color: #fff;
+    border: none;
+    padding: 30px 50px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 500px;
+}
+
+.button-group button:hover {
+    background-color: #0056b3; /* Example color, change as needed */
+}
+.content-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    max-width: 70%;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .content-table thead tr {
+    background-color: #cc1f3c;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+  }
+  
+  .content-table th,
+  .content-table td {
+    padding: 12px 15px;
+  }
+  
+  .content-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+    background-color: #ffffff;
+  }
+  
+  .content-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+  }
+  
+  .content-table tbody tr:last-of-type {
+    border-bottom: 2px solid #062079;
+  }
+  
+  .content-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+  }
+
+footer{
+    display:none;
+
+  }
+
+.content-table a{
+    color: #062079;
+}
+</style>
+
+
+
+
+
+   
+</head>
+<body>
+
+    <img class=logo src="{{ url_for('static', filename='images/header_college_name.jpg') }}">
+    <header class="head">
+    <ul class="nav justify-content-end">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#about">About</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link active " href="#foots">Contact</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="/login">Login</a> 
+        </li>
+    </ul>
+    </header>
+
+  
+  
+    <center>{% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <ul class="flashes">
+             {% for message in messages %}
+              <div class="message_flash">{{ message }}</div>
+             {% endfor %}
+         </ul>
+       {% endif %}
+      {% endwith %}</center>
+    
+      <center>
+        <br><h1> Scores</h1><br>
+       
+        <table class="content-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Date</th>
+                
+                <th>C Quiz(%)</th>
+                <th>Python Quiz(%)</th>
+                <th>Java Quiz(%)</th>
+                <th>Average(%)</th>               
+              </tr>
+            </thead>
+            <tbody>
+            {% for data in total %}
+              <tr>
+                <td>{{ total[0][1] }}</td>
+                <td>{{ total[0][0] }}</td>
+                <td>{{  total[0][2] }}</td>
+                <td>{{  total[0][3] }}</td>
+                <td>{{  total[0][4] }}</td>
+                <td>{{  total[0][5] }}</td>
+               
+              </tr>
+            {% endfor %}
+            </tbody>
+          
+          </table>
+          <a href="/student_dashboard2/{{student_id}}">Home</a>
+        </center>
+</body>
+</html>

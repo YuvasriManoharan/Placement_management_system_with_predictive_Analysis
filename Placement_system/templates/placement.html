@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placement Notifications</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/homestyle.css">
+   
+    <style>
+        .logo {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            height: auto;
+        }
+        .active{
+            color:rgb(255, 255, 255);
+        }
+        main {
+            padding: 20px;
+        }
+        .header {
+            background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        /* Global styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: auto;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        /* Placement card styles */
+        .placement-card {
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .placement-title {
+            color: #007bff;
+            font-size: 24px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .placement-details p {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+        /* Feedback form styles */
+        .feedback-form {
+            margin-top: 20px;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: vertical;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        td {
+            vertical-align: top;
+        }
+
+        .placement-details p {
+            margin: 5px 0;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+        }
+
+        .placement-details p strong {
+            min-width: 200px; /* Adjust as needed */
+            display: inline-block;
+        }
+
+        .placement-details p span {
+            flex-grow: 1;
+        }
+    </style>
+
+</head>
+<body>
+    <img class=logo src="{{ url_for('static', filename='images/header_college_name.jpg') }}">
+
+<header class="header">
+    
+    <nav>
+        <ul class="nav justify-content-center">
+            <li class="nav-item">
+                <a class="nav-link active" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="#contact">Contact</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="/login">Login</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+    
+        <table>
+            <tbody>  
+                    <div class="container">
+                        
+                                <h2 class="placement-title">Previous Placement</h2>
+                                {% for placement in placements %}
+                    <div class="placement-container">
+                        <div class="placement-card">
+                            <div class="placement-details">
+                                <p><strong>Company Name:</strong> <span>{{ placement.companyName }}</span></p>
+                                <p><strong>Industry Type:</strong> <span>{{ placement.industryType }}</span></p>
+                                <p><strong>Date of Program:</strong> <span>{{ placement.dateOfProgram.strftime('%Y-%m-%d') }}</span></p>
+                                <form action="/update/{{ placement._id }}" method="POST">
+                                    <div class="form-group">
+                                        <label for="studentsAttended">No of Students Attended:</label>
+                                        <input type="number" id="studentsAttended" name="studentsAttended" value="{{ placement.studentsAttended }}" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="studentsSelected">No of Students Selected:</label>
+                                        <input type="number" id="studentsSelected" name="studentsSelected"  value="{{ placement.studentsAttended }}" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="interviewProcess">Interview Process Details:</label>
+                                        <textarea id="interviewProcess" name="interviewProcess" rows="4" cols="50" required>{{ placement.interviewProcess }}</textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Submit Details</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    

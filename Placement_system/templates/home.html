@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Placement Management System</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/homestyle.css') }}">
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+        <style>
+            .hero {
+                background-image: linear-gradient(rgba(0, 0, 0, 0.229), rgba(0,0,0,0.5)), url('static/images/home_page.jpeg');
+                background-size: cover;
+            background-position: center;
+            height: 150px; /* Adjust the height as needed */
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-align: center;
+            opacity:unset;
+            border-radius: 10px;
+            animation-name: fadeIn;
+            animation-duration: 2s;
+        }
+
+        </style>
+
+<body>
+    <img class=logo src="{{ url_for('static', filename='images/header_college_name.jpg') }}">
+    <header class="head">
+    <ul class="nav justify-content-end">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active " href="#foots">Contact</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="/login">Login</a> 
+        </li>
+      </ul>
+    </header>
+    <main>
+        <section class="hero">
+            <div class="container">
+                
+                <h1 class="welcome">Welcome to the Placement Cell...!</h1>
+            </div>
+        </section>
+    
+        <section id="about">
+            <div class="container">
+                <div class="head2">
+                <h2>About Us</h2>
+                </div>
+                <p>Welcome to A.V.C. College of Engineering, a leading institution in Mayiladuthurai, Tamil Nadu. With a focus on academic excellence and industry relevance, our college prepares students for successful careers in engineering. Our state-of-the-art facilities, experienced faculty, and industry partnerships ensure a holistic learning experience. Join us and embark on a journey of knowledge, innovation, and success.</p>
+            </div>
+        </section>
+    
+        <section class="Report">
+            <div class="container">
+                <h2>Previous Report </h2>
+                <div class='tableauPlaceholder' id='viz1711629442836' style='position: relative'><noscript><a href='#'><img alt='2022-2023 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Pl&#47;Placement_17116293419120&#47;Sheet1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Placement_17116293419120&#47;Sheet1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Pl&#47;Placement_17116293419120&#47;Sheet1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1711629442836');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+                <!-- Login form can be added here -->
+            </div>
+            
+        </section>
+    </main>
+    
+    <footer>
+        <div id="foots">
+            <p>&copy; 2024 A.V.C. College of Engineering. All rights reserved.</p>
+        </div>
+    </footer>
+    
+
+</body>
+</html>

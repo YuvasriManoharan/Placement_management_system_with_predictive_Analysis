@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', filename='css/loginstyle.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/homestyle.css') }}">
+    <title>Select Role</title>
+</head>
+<body>
+  <img class=logo src="{{ url_for('static', filename='images/header_college_name.jpg') }}">
+    <header class="head">
+    <ul class="nav justify-content-end">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="home.html">Home</a>
+          </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active " href="#foots">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/login">Login</a>
+        </li>
+      </ul>
+    </header>
+    <div class="container">
+        <h1>Select Your Role</h1>
+        <div class="button-group">
+            <a href="/tpo_login" class="button">TPO</a>
+            <a href="/student_login1" class="button">Student</a>
+        </div>
+    </div>
+
+    
+        
+</body>
+</html>

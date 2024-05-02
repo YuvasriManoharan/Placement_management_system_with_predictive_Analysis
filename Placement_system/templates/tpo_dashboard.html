@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TPO Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .logo {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+}
+        .nav-link {
+            color: #fff;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .nav-link:hover {
+            color: #f0f0f0;
+        }
+        main {
+            padding: 20px;
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card-header {
+            background-image: linear-gradient(to top, #09203f 0%, #537895 100%);
+            color: #fff;
+            border-radius: 10px 10px 0 0;
+            padding: 15px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .card-body {
+            padding: 20px;
+        }
+        .btn-custom {
+            background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+            border: none;
+            border-radius: 5px;
+            padding: 12px 24px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .btn-custom:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <img class=logo src="{{ url_for('static', filename='images/header_college_name.jpg') }}">
+
+<header class="header">
+    
+    <nav>
+        <ul class="nav justify-content-center">
+            <li class="nav-item">
+                <a class="nav-link active" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="#contact">Contact</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="/login">Login</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<main class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Training Events</h2>
+                </div>
+                <div class="card-body">
+                    <button class="btn btn-custom" onclick="location.href='previous'">Previous Training Events</button>
+                    <button class="btn btn-custom" onclick="location.href='upcoming'">Upcoming Training Events</button>
+                    <button class="btn btn-custom" onclick="location.href='add_training_event'">Add Training Event</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h2>On Campus Placement Drive</h2>
+                </div>
+                <div class="card-body">
+                    <button class="btn btn-custom" onclick="location.href='placement_previous'">Previous Placement Drive</button>
+                    <button class="btn btn-custom" onclick="location.href='placement_upcoming'">Upcoming Placement Drive</button>
+                    <button class="btn btn-custom" onclick="location.href='placement_add_event'">Add Placement Drive</button>
+                </div>
+            </div>
+        </div>
+      
+</body>
+
+</html>
